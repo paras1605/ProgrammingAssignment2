@@ -1,7 +1,11 @@
-## Put comments here that give an overall description of what your
-## functions do
+## First the inverse is set to Null and is placed as a holder for future value.
+## set function -> Then x is to the new vetor y and  resets the inverse, i, to Null.
+## get function -> gives a vector x
+## setinverse function -> sets the inverse, i to solve matrix
+## getinverse function -> returns the inverse i
+## list -> returns the special vector containing all the functions defined.
 
-## Write a short comment describing this function
+## makeCacheMatrix is a function to get the matrix as a object that can Cache its inverse.
 
 makeCacheMatrix <- function(x = matrix()) {
   i <- NULL
@@ -16,14 +20,15 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
+## If inverse of a matrix was previously computed, then this function helps in retreiving its value without computing, hence time saving
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+        
   i <<- x$getinverse()
   if(!is.null(i)){
     message("getting cached data")
     return(i)
+    ## Return a matrix that is the inverse of 'x'
   }
   data <- x$get()
   i <- solve(data, ...)
